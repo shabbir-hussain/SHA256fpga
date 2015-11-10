@@ -9,13 +9,14 @@
 
 int main()
 {
-    BYTE msg[4] = {0x12, 0X34, 0X56, 0X78};
-    LONG msgLen = 0x0000000000000004;
+    BYTE msg[5] = {0x68, 0X65, 0X6c, 0X6c, 0x6f};
+    LONG msgLen = 0x0000000000000005;
     SHA256(msg,msgLen);
     
-    for(int i=0; i<MAXBLOCKS*BLOCKSIZE;i++){
-        printf("%02x",digest[i]);
+    for(int i=0; i<DIGESTSIZE;i++){
+        printf("%04x",gDigest[i]);
     }
+    printf("\n");
 
     return 0;
 }

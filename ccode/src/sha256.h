@@ -4,11 +4,12 @@
  */
 
 #include "stdint.h"
+#include <stdio.h>
 
 // CONSTANTS
 #define MAXBLOCKS 3
 #define BLOCKSIZE 64 //64 Bytes in 512 bits
-#define DIGESTSIZE 256
+#define DIGESTSIZE 8 // 8 words = 256 bits
 
 typedef uint8_t BYTE;
 typedef uint32_t WORD;
@@ -26,6 +27,18 @@ static const WORD k[64] = {
 };
 
 //HELPER FUNCTIONS
+/* macros taken from https://github.com/B-Con/crypto-algorithms/blob/master/sha256.c */
+#define ROTLEFT(a,b) (((a) << (b)) | ((a) >> (32-(b))))
+#define ROTRIGHT(a,b) (((a) >> (b)) | ((a) << (32-(b))))
+
+#define CH(x,y,z) (((x) & (y)) ^ (~(x) & (z)))
+#define MAJ(x,y,z) (((x) & (y)) ^ ((x) & (z)) ^ ((y) & (z)))
+#define EP0(x) (ROTRIGHT(x,2) ^ ROTRIGHT(x,13) ^ ROTRIGHT(x,22))
+#define EP1(x) (ROTRIGHT(x,6) ^ ROTRIGHT(x,11) ^ ROTRIGHT(x,25))
+#define SIG0(x) (ROTRIGHT(x,7) ^ ROTRIGHT(x,18) ^ ((x) >> 3))
+#define SIG1(x) (ROTRIGHT(x,17) ^ ROTRIGHT(x,19) ^ ((x) >> 10))
+/* end of macros */
+
 int pad (BYTE* data, BYTE* msg, LONG msgLen){
 
     //put msg in buffer
@@ -40,7 +53,7 @@ int pad (BYTE* data, BYTE* msg, LONG msgLen){
     i++;
     
     //add extrapad
-    while(i%(488/8)!=0){
+    while(i%BLOCKSIZE!=0){
         data[i]=0x00;
         i++;
     }
@@ -53,11 +66,12 @@ int pad (BYTE* data, BYTE* msg, LONG msgLen){
     return numBlocks;
 }
 
-void outerloop(BYTE* digest, BYTE* data, int numBlocks){
+void outerloop(WORD* digest, BYTE* data, int numBlocks){
 
     //init variables
-    WORD h0,h2,h3,h4,h5,h6,h7;
+    WORD h0,h1,h2,h3,h4,h5,h6,h7;
     WORD a,b,c,d,e,f,g,h;
+    BYTE* Mi = data;
 
     h0 = 0x6a09e667;
     h1 = 0xbb67ae85;
@@ -68,13 +82,71 @@ void outerloop(BYTE* digest, BYTE* data, int numBlocks){
     h6 = 0x1f83d9ab;
     h7 = 0x5be0cd19;
 
-    for(int i=0;i<numBlocks){
-        
+    for(int i=0;i<numBlocks;i++){
+  
+        //generate W vector
+        WORD W[64];
+        int t=0;
+        for(t=0;t<15;t++){
+            W[t] = (Mi[4*t]<<24) | (Mi[4*t+1]<<16) | (Mi[4*t+2]<<8) | Mi[4*t+3];
+            printf("%04x\n",W[t]);
+        }
+        for(;t<64;t++){
+            W[t] = SIG1(W[t-2])+W[t-7]+SIG0(W[t-15])+W[t-16]; 
+        }
+    
+        //init temp vars
+        a = h0;
+        b = h1;
+        c = h2;
+        d = h3;
+        e = h4;
+        f = h5;
+        g = h6;
+        f = h7;
+
+        WORD T1,T2;
+
+        for(t=0; t<64; t++){
+            T1 = h+ EP1(e) + CH(e,f,g) + k[t] + W[t];
+            T2 = EP0(a) + MAJ(a,b,c);
+            h=g;
+            g=f;
+            f=e;
+            e=d+T1;
+            d=c;
+            c=b;
+            b=a;
+            a= T1+T2;
+        }
+
+        h0 = a;
+        h1 = b;
+        h2 = c;
+        h3 = d;
+        h4 = e;
+        h5 = f;
+        h6 = g;
+        h7 = h;
+
+        //update block size
+        Mi = Mi+BLOCKSIZE;
     }
+
+    //update digest;
+    digest[0] = h0;
+    digest[1] = h1;
+    digest[2] = h2;
+    digest[3] = h3;
+    digest[4] = h4;
+    digest[5] = h5;
+    digest[6] = h6;
+    digest[7] = h7;
+
 }
 
 BYTE gData[MAXBLOCKS*BLOCKSIZE];
-BYTE gDigest[BLOCKSIZE];
+WORD gDigest[DIGESTSIZE];
 
 //HASHING FUNCTION
 void SHA256(BYTE* msg, LONG msgLen){
@@ -82,6 +154,7 @@ void SHA256(BYTE* msg, LONG msgLen){
     //Pad the msg
     int numBlocks = pad(gData,msg,msgLen);
     
-    outerloop(gDigest,data,numBlocks);
+    printf("padded to %d blocks\n", numBlocks);
+    outerloop(gDigest,gData,numBlocks);
 
 }
