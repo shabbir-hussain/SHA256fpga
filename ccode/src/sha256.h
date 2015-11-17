@@ -58,6 +58,8 @@ int pad (BYTE* data, BYTE* msg, LONG msgLen){
         i++;
     }
 
+    //convert to from bytes to bits
+    msgLen *= 8;
     //append size
     data[i-2] = msgLen & 0xFFFFFFFF00000000;
     data[i-1] = msgLen & 0x00000000FFFFFFFF;
@@ -87,12 +89,13 @@ void outerloop(WORD* digest, BYTE* data, int numBlocks){
         //generate W vector
         WORD W[64];
         int t=0;
-        for(t=0;t<15;t++){
-            W[t] = (Mi[4*t]<<24) | (Mi[4*t+1]<<16) | (Mi[4*t+2]<<8) | Mi[4*t+3];
+        for(t=0;t<16;t++){
+            W[t] = (Mi[4*t]<<24) + (Mi[4*t+1]<<16) + (Mi[4*t+2]<<8) + Mi[4*t+3];
             printf("%04x\n",W[t]);
         }
         for(;t<64;t++){
-            W[t] = SIG1(W[t-2])+W[t-7]+SIG0(W[t-15])+W[t-16]; 
+            W[t] = SIG1(W[t-2])+W[t-7]+SIG0(W[t-15])+W[t-16] & 0xFFFFFFFF; 
+            printf("%04x\n",W[t]);
         }
     
         //init temp vars
@@ -103,12 +106,12 @@ void outerloop(WORD* digest, BYTE* data, int numBlocks){
         e = h4;
         f = h5;
         g = h6;
-        f = h7;
+        h = h7;
 
         WORD T1,T2;
 
         for(t=0; t<64; t++){
-            T1 = h+ EP1(e) + CH(e,f,g) + k[t] + W[t];
+            T1 = h+  EP1(e) + CH(e,f,g) + k[t] + W[t];
             T2 = EP0(a) + MAJ(a,b,c);
             h=g;
             g=f;
@@ -120,14 +123,14 @@ void outerloop(WORD* digest, BYTE* data, int numBlocks){
             a= T1+T2;
         }
 
-        h0 = a;
-        h1 = b;
-        h2 = c;
-        h3 = d;
-        h4 = e;
-        h5 = f;
-        h6 = g;
-        h7 = h;
+        h0 = a+h0;
+        h1 = b+h1;
+        h2 = c+h2;
+        h3 = d+h3;
+        h4 = e+h4;
+        h5 = f+h5;
+        h6 = g+h6;
+        h7 = h+h7;
 
         //update block size
         Mi = Mi+BLOCKSIZE;

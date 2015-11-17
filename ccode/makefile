@@ -2,7 +2,8 @@
 CC = clang
 
 # compiler flags
-#CFLAGS = -I libfi/include
+#CFLAGS = -I /usr/include/openssl
+CRYPTFLAGS = -lssl -lcrypto
 
 #require a target argument
 CPP_FILES := $(wildcard src/*.c)
@@ -14,7 +15,7 @@ BINDIR = bin
 
 
 main.exe: clean $(OBJ_FILES)
-	$(CC) $(CFLAGS) -g -o bin/$(TARGET) obj/$(TARGET).o
+	$(CC) $(CFLAGS) -g -o bin/$(TARGET) obj/$(TARGET).o $(CRYPTFLAGS)
 
 clean:
 	rm -f bin/* obj/*.o
