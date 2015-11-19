@@ -1,0 +1,10 @@
+Depth = 3;
+Width = 8;
+Address_radix = dec;
+Data_radix = hex;
+Content
+Begin
+0: 61;	-- mainmsg[0] = 97
+1: 62;	-- mainmsg[1] = 98
+2: 63;	-- mainmsg[2] = 99
+End;

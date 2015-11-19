@@ -1,0 +1,66 @@
+\documentclass[landscape]{article}
+\usepackage{gantt}
+\pagestyle{empty}
+\begin{document}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{8}{6}
+\begin{ganttitle}
+\numtitle{0}{1}{5}{1}
+\end{ganttitle}
+\ganttbar{  \%msg = alloca [3 x i8], align 1}{1}{1}
+\ganttcon{2}{1}{1}{3}
+\ganttcon{2}{1}{1}{2}
+\ganttbar{  \%1 = getelementptr inbounds [3 x i8]* \%msg, i32 0, i32 0}{1}{1}
+\ganttcon{2}{2}{2}{5}
+\ganttbar{  \%2 = getelementptr inbounds [3 x i8]* \%msg, i32 0, i32 0}{1}{1}
+\ganttcon{2}{3}{4}{6}
+\ganttbar{  br label \%4}{1}{1}
+\ganttbar{  call void @legup\_memcpy\_1(i8* \%1, i8* getelementptr inbounds ([3 x i8]* @ma...}{2}{1}
+\ganttbar{  call void @SHA256(i8* \%2, i64 3) #3}{4}{1}
+\ganttbar{  \%3 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([2 x i8]* @.str...}{5}{1}
+\end{gantt}
+\end{figure}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{4}{2}
+\begin{ganttitle}
+\numtitle{0}{1}{1}{1}
+\end{ganttitle}
+\ganttbar{  \%5 = phi i32 [ 0, \%0 ], [ \%10, \%9 ]}{1}{1}
+\ganttcon{2}{1}{1}{2}
+\ganttbar{  \%exitcond = icmp eq i32 \%5, 8}{1}{1}
+\ganttcon{2}{2}{1}{3}
+\ganttbar{  br i1 \%exitcond, label \%11, label \%6}{1}{1}
+\end{gantt}
+\end{figure}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{5}{4}
+\begin{ganttitle}
+\numtitle{0}{1}{3}{1}
+\end{ganttitle}
+\ganttbar{  \%scevgep = getelementptr [8 x i32]* @gDigest, i32 0, i32 \%5}{1}{1}
+\ganttcon{2}{1}{1}{2}
+\ganttbar{  \%7 = load i32* \%scevgep, align 4}{1}{2}
+\ganttcon{3}{2}{3}{4}
+\ganttbar{  br label \%9}{1}{1}
+\ganttbar{  \%8 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([5 x i8]* @.str...}{3}{1}
+\end{gantt}
+\end{figure}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{3}{2}
+\begin{ganttitle}
+\numtitle{0}{1}{1}{1}
+\end{ganttitle}
+\ganttbar{  \%10 = add nsw i32 \%5, 1}{1}{1}
+\ganttbar{  br label \%4}{1}{1}
+\end{gantt}
+\end{figure}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{3}{2}
+\begin{ganttitle}
+\numtitle{0}{1}{1}{1}
+\end{ganttitle}
+\ganttbar{  \%12 = call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([2 x i8]* @.st...}{1}{1}
+\ganttbar{  ret i32 0}{1}{1}
+\end{gantt}
+\end{figure}
+\end{document}

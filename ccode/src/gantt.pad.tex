@@ -1,0 +1,102 @@
+\documentclass[landscape]{article}
+\usepackage{gantt}
+\pagestyle{empty}
+\begin{document}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{5}{2}
+\begin{ganttitle}
+\numtitle{0}{1}{1}{1}
+\end{ganttitle}
+\ganttbar{  \%indvar1 = phi i64 [ \%indvar.next2, \%3 ], [ 0, \%0 ]}{1}{1}
+\ganttcon{2}{1}{1}{3}
+\ganttbar{  \%2 = phi i32 [ \%7, \%3 ], [ 0, \%0 ]}{1}{1}
+\ganttbar{  \%exitcond = icmp eq i64 \%indvar1, \%msgLen}{1}{1}
+\ganttcon{2}{3}{1}{4}
+\ganttbar{  br i1 \%exitcond, label \%8, label \%3}{1}{1}
+\end{gantt}
+\end{figure}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{8}{5}
+\begin{ganttitle}
+\numtitle{0}{1}{4}{1}
+\end{ganttitle}
+\ganttbar{  \%4 = getelementptr inbounds i8* \%msg, i32 \%2}{1}{1}
+\ganttcon{2}{1}{1}{2}
+\ganttbar{  \%5 = load i8* \%4, align 1}{1}{2}
+\ganttcon{3}{2}{3}{7}
+\ganttbar{  \%6 = getelementptr inbounds i8* \%data, i32 \%2}{1}{1}
+\ganttcon{2}{3}{3}{7}
+\ganttbar{  \%7 = add nsw i32 \%2, 1}{1}{1}
+\ganttbar{  \%indvar.next2 = add i64 \%indvar1, 1}{1}{1}
+\ganttbar{  br label \%1}{1}{1}
+\ganttbar{  store i8 \%5, i8* \%6, align 1}{3}{1}
+\end{gantt}
+\end{figure}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{6}{3}
+\begin{ganttitle}
+\numtitle{0}{1}{2}{1}
+\end{ganttitle}
+\ganttbar{  \%9 = trunc i64 \%msgLen to i32}{1}{1}
+\ganttcon{2}{1}{1}{4}
+\ganttcon{2}{1}{1}{2}
+\ganttbar{  \%10 = getelementptr inbounds i8* \%data, i32 \%9}{1}{1}
+\ganttcon{2}{2}{1}{3}
+\ganttbar{  store i8 -128, i8* \%10, align 1}{1}{1}
+\ganttbar{  \%11 = add i32 \%9, 1}{1}{1}
+\ganttbar{  br label \%12}{1}{1}
+\end{gantt}
+\end{figure}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{7}{2}
+\begin{ganttitle}
+\numtitle{0}{1}{1}{1}
+\end{ganttitle}
+\ganttbar{  \%indvar = phi i32 [ \%indvar.next, \%15 ], [ 0, \%8 ]}{1}{1}
+\ganttcon{2}{1}{1}{3}
+\ganttcon{2}{1}{1}{2}
+\ganttbar{  \%i.1.in = add i32 \%9, \%indvar}{1}{1}
+\ganttbar{  \%i.1 = add i32 \%11, \%indvar}{1}{1}
+\ganttcon{2}{3}{1}{4}
+\ganttbar{  \%13 = and i32 \%i.1, 63}{1}{1}
+\ganttcon{2}{4}{1}{5}
+\ganttbar{  \%14 = icmp eq i32 \%13, 0}{1}{1}
+\ganttcon{2}{5}{1}{6}
+\ganttbar{  br i1 \%14, label \%16, label \%15}{1}{1}
+\end{gantt}
+\end{figure}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{5}{3}
+\begin{ganttitle}
+\numtitle{0}{1}{2}{1}
+\end{ganttitle}
+\ganttbar{  \%scevgep = getelementptr i8* \%data, i32 \%i.1}{1}{1}
+\ganttcon{2}{1}{1}{2}
+\ganttbar{  store i8 0, i8* \%scevgep, align 1}{1}{1}
+\ganttbar{  \%indvar.next = add i32 \%indvar, 1}{1}{1}
+\ganttbar{  br label \%12}{1}{1}
+\end{gantt}
+\end{figure}
+\begin{figure}
+\begin{gantt}[fontsize=\scriptsize]{10}{34}
+\begin{ganttitle}
+\numtitle{0}{1}{33}{1}
+\end{ganttitle}
+\ganttbar{  \%17 = shl i64 \%msgLen, 3}{1}{1}
+\ganttcon{2}{1}{1}{3}
+\ganttbar{  \%18 = add nsw i32 \%i.1.in, -1}{1}{1}
+\ganttcon{2}{2}{2}{7}
+\ganttbar{  \%20 = trunc i64 \%17 to i8}{1}{1}
+\ganttcon{2}{3}{1}{5}
+\ganttbar{  \%21 = getelementptr inbounds i8* \%data, i32 \%i.1.in}{1}{1}
+\ganttcon{2}{4}{1}{5}
+\ganttbar{  store i8 \%20, i8* \%21, align 1}{1}{1}
+\ganttbar{  \%22 = sdiv i32 \%i.1, 64}{1}{32}
+\ganttcon{33}{6}{33}{9}
+\ganttbar{  \%19 = getelementptr inbounds i8* \%data, i32 \%18}{2}{1}
+\ganttcon{3}{7}{2}{8}
+\ganttbar{  store i8 0, i8* \%19, align 1}{2}{1}
+\ganttbar{  ret i32 \%22}{33}{1}
+\end{gantt}
+\end{figure}
+\end{document}

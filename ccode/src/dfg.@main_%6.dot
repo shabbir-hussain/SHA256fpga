@@ -1,0 +1,6 @@
+digraph {
+Node0x401e980[label="  %scevgep = getelementptr [8 x i32]* @g..."];
+Node0x401e980 -> Node0x401e980[label="D:100.00ns L:0",color=blue];
+Node0x401ebb0[label="  %7 = load i32* %scevgep, align 4"];
+Node0x401ebb0 -> Node0x401ebb0[label="D:0.00ns L:2",color=blue];
+}

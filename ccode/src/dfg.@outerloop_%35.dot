@@ -1,0 +1,22 @@
+digraph {
+Node0x3fb6260[label="  %indvar = phi i32 [ %indvar.next, %68 ..."];
+Node0x3fb6260 -> Node0x3fb6260[label="D:0.00ns L:0",color=blue];
+Node0x3fb6260 -> Node0x3fb6260[label="D:0.00ns L:0",color=blue];
+Node0x3fb6260 -> Node0x3fb6260[label="D:0.00ns L:0",color=blue];
+Node0x3fb6260 -> Node0x3fb6260[label="D:0.00ns L:0",color=blue];
+Node0x3fb6260 -> Node0x3fb6260[label="D:0.00ns L:0",color=blue];
+Node0x3fb6260 -> Node0x3fb6260[label="D:0.00ns L:0",color=blue];
+Node0x3fb6260 -> Node0x3fb6260[label="D:0.00ns L:0",color=blue];
+Node0x3fb6340[label="  %36 = add i32 %indvar, 1"];
+Node0x3fb6340 -> Node0x3fb6340[label="D:4.00ns L:0",color=blue];
+Node0x3fb6420[label="  %scevgep8 = getelementptr [64 x i32]* ..."];
+Node0x3fb6420 -> Node0x3fb6420[label="D:100.00ns L:0",color=blue];
+Node0x3fb6420 -> Node0x3fb6420[label="D:100.00ns L:0",color=blue];
+Node0x3fb6500[label="  %37 = add i32 %indvar, 14"];
+Node0x3fb6500 -> Node0x3fb6500[label="D:4.00ns L:0",color=blue];
+Node0x3fb65e0[label="  %scevgep10 = getelementptr [64 x i32]*..."];
+Node0x3fb65e0 -> Node0x3fb65e0[label="D:100.00ns L:0",color=blue];
+Node0x3fb65e0 -> Node0x3fb65e0[label="D:100.00ns L:0",color=blue];
+Node0x3fb66c0[label="  %exitcond5 = icmp eq i32 %indvar, 48"];
+Node0x3fb66c0 -> Node0x3fb66c0[label="D:4.00ns L:0",color=blue];
+}
