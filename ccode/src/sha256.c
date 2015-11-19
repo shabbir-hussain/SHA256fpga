@@ -13,12 +13,12 @@ int main()
     LONG msgLen = 3;
     SHA256(msg,msgLen);
     
-    printf("\n");
+/*    printf("\n");
     for(int i=0; i<DIGESTSIZE;i++){
-        printf("%04x",gDigest[i]);
+        printf("%04x\n",gDigest[i]);
     }
     printf("\n");
-
+*/
     /*
     for(int i=0; i<MAXBLOCKS*BLOCKSIZE;i++){
         printf("%02x", gData[i]);

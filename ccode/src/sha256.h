@@ -91,11 +91,11 @@ void outerloop(WORD* digest, BYTE* data, int numBlocks){
         int t=0;
         for(t=0;t<16;t++){
             W[t] = (Mi[4*t]<<24) + (Mi[4*t+1]<<16) + (Mi[4*t+2]<<8) + Mi[4*t+3];
-            printf("%04x\n",W[t]);
+            //printf("%04x\n",W[t]);
         }
         for(;t<64;t++){
             W[t] = SIG1(W[t-2])+W[t-7]+SIG0(W[t-15])+W[t-16] & 0xFFFFFFFF; 
-            printf("%04x\n",W[t]);
+            //printf("%04x\n",W[t]);
         }
     
         //init temp vars
@@ -157,7 +157,7 @@ void SHA256(BYTE* msg, LONG msgLen){
     //Pad the msg
     int numBlocks = pad(gData,msg,msgLen);
     
-    printf("padded to %d blocks\n", numBlocks);
+    //printf("padded to %d blocks\n", numBlocks);
     outerloop(gDigest,gData,numBlocks);
 
 }

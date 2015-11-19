@@ -1,5 +1,5 @@
 # vsim -c -do "run 7000000000000000ns; exit;" work.main_tb 
-# Start time: 11:18:09 on Nov 19,2015
+# Start time: 11:24:51 on Nov 19,2015
 # Loading work.main_tb
 # Loading work.top
 # Loading work.memory_controller
@@ -14,76 +14,9 @@
 # Loading work.LPM_HINT_EVALUATION
 # Loading work.outerloop
 # run 7000000000000000ns
-# Cycle:                  281 Time:                 5670    padded to           1 blocks
-# Cycle:                  292 Time:                 5890    61626380
-# Cycle:                  300 Time:                 6050    0000
-# Cycle:                  308 Time:                 6210    0000
-# Cycle:                  316 Time:                 6370    0000
-# Cycle:                  324 Time:                 6530    0000
-# Cycle:                  332 Time:                 6690    0000
-# Cycle:                  340 Time:                 6850    0000
-# Cycle:                  348 Time:                 7010    0000
-# Cycle:                  356 Time:                 7170    0000
-# Cycle:                  364 Time:                 7330    0000
-# Cycle:                  372 Time:                 7490    0000
-# Cycle:                  380 Time:                 7650    0000
-# Cycle:                  388 Time:                 7810    0000
-# Cycle:                  396 Time:                 7970    0000
-# Cycle:                  404 Time:                 8130    0000
-# Cycle:                  412 Time:                 8290    0018
-# Cycle:                  423 Time:                 8510    61626380
-# Cycle:                  432 Time:                 8690    f0000
-# Cycle:                  441 Time:                 8870    7da86405
-# Cycle:                  450 Time:                 9050    600003c6
-# Cycle:                  459 Time:                 9230    3e9d7b78
-# Cycle:                  468 Time:                 9410    183fc00
-# Cycle:                  477 Time:                 9590    12dcbfdb
-# Cycle:                  486 Time:                 9770    e2e2c38e
-# Cycle:                  495 Time:                 9950    c8215c1a
-# Cycle:                  504 Time:                10130    b73679a2
-# Cycle:                  513 Time:                10310    e5bc3909
-# Cycle:                  522 Time:                10490    32663c5b
-# Cycle:                  531 Time:                10670    9d209d67
-# Cycle:                  540 Time:                10850    ec8726cb
-# Cycle:                  549 Time:                11030    702138a4
-# Cycle:                  558 Time:                11210    d3b7973b
-# Cycle:                  567 Time:                11390    93f5997f
-# Cycle:                  576 Time:                11570    3b68ba73
-# Cycle:                  585 Time:                11750    aff4ffc1
-# Cycle:                  594 Time:                11930    f10a5c62
-# Cycle:                  603 Time:                12110    a8b3996
-# Cycle:                  612 Time:                12290    72af830a
-# Cycle:                  621 Time:                12470    9409e33e
-# Cycle:                  630 Time:                12650    24641522
-# Cycle:                  639 Time:                12830    9f47bf94
-# Cycle:                  648 Time:                13010    f0a64f5a
-# Cycle:                  657 Time:                13190    3e246a79
-# Cycle:                  666 Time:                13370    27333ba3
-# Cycle:                  675 Time:                13550    c4763f2
-# Cycle:                  684 Time:                13730    840abf27
-# Cycle:                  693 Time:                13910    7a290d5d
-# Cycle:                  702 Time:                14090    65c43da
-# Cycle:                  711 Time:                14270    fb3e89cb
-# Cycle:                  720 Time:                14450    cc7617db
-# Cycle:                  729 Time:                14630    b9e66c34
-# Cycle:                  738 Time:                14810    a9993667
-# Cycle:                  747 Time:                14990    84badedd
-# Cycle:                  756 Time:                15170    c21462bc
-# Cycle:                  765 Time:                15350    1487472c
-# Cycle:                  774 Time:                15530    b20f7a99
-# Cycle:                  783 Time:                15710    ef57b9cd
-# Cycle:                  792 Time:                15890    ebe6b238
-# Cycle:                  801 Time:                16070    9fe3095e
-# Cycle:                  810 Time:                16250    78bc8d4b
-# Cycle:                  819 Time:                16430    a43fcf15
-# Cycle:                  828 Time:                16610    668b2ff8
-# Cycle:                  837 Time:                16790    eeaba2cc
-# Cycle:                  846 Time:                16970    12b1edeb
-# Cycle:                 1185 Time:                23750    
-# Cycle:                 1189 Time:                23830    ba7816bfCycle:                 1194 Time:                23930    8f01cfeaCycle:                 1199 Time:                24030    414140deCycle:                 1204 Time:                24130    5dae2223Cycle:                 1209 Time:                24230    b00361a3Cycle:                 1214 Time:                24330    96177a9cCycle:                 1219 Time:                24430    b410ff61Cycle:                 1224 Time:                24530    f20015adCycle:                 1227 Time:                24590    
-# At t=            24590000 clk=1 finish=1 return_val=         0
-# Cycles:                 1227
-# ** Note: $finish    : sha256.v(6299)
-#    Time: 24590 ns  Iteration: 2  Instance: /main_tb
-# End time: 11:18:09 on Nov 19,2015, Elapsed time: 0:00:00
+# At t=            23750000 clk=1 finish=1 return_val=         0
+# Cycles:                 1185
+# ** Note: $finish    : sha256.v(6132)
+#    Time: 23750 ns  Iteration: 2  Instance: /main_tb
+# End time: 11:24:51 on Nov 19,2015, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
