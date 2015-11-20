@@ -44,9 +44,8 @@ int pad (BYTE* data, BYTE* msg, LONG msgLen){
 
     //put msg in buffer
     int i=0;
-    while(i<msgLen){
+    for(;i<msgLen;i++){
         data[i] = msg[i];
-        i++;
     }
 
     //append pad
@@ -54,9 +53,8 @@ int pad (BYTE* data, BYTE* msg, LONG msgLen){
     i++;
     
     //add extrapad
-   while(i%BLOCKSIZE!=0){
+   for(;i%BLOCKSIZE!=0;i++){
         	data[i]=0x00;
-        	i++;
     	}
 
     //convert to from bytes to bits
@@ -92,6 +90,7 @@ void outerloop(WORD* digest, BYTE* data, int numBlocks){
         //generate W vector
         WORD W[64];
         int t=0;
+
         for(t=0;t<16;t++){
             W[t] = (Mi[4*t]<<24) + (Mi[4*t+1]<<16) + (Mi[4*t+2]<<8) + Mi[4*t+3];
             //printf("%04x\n",W[t]);
@@ -170,13 +169,14 @@ int main()
     BYTE msg[44] = "the quick brown fox jumped over the lazy dog";
     LONG msgLen = 44;
     SHA256(msg,msgLen);
-    
+
+/*    
     printf("\n");
     for(int i=0; i<DIGESTSIZE;i++){
         printf("%04x\n",gDigest[i]);
     }
     printf("\n");
-
+*/
     /*
     for(int i=0; i<MAXBLOCKS*BLOCKSIZE;i++){
         printf("%02x", gData[i]);
