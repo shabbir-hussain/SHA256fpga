@@ -1,5 +1,5 @@
 # vsim -c -do "run 7000000000000000ns; exit;" work.main_tb 
-# Start time: 11:24:51 on Nov 19,2015
+# Start time: 18:40:12 on Nov 19,2015
 # Loading work.main_tb
 # Loading work.top
 # Loading work.memory_controller
@@ -14,9 +14,19 @@
 # Loading work.LPM_HINT_EVALUATION
 # Loading work.outerloop
 # run 7000000000000000ns
-# At t=            23750000 clk=1 finish=1 return_val=         0
-# Cycles:                 1185
-# ** Note: $finish    : sha256.v(6132)
-#    Time: 23750 ns  Iteration: 2  Instance: /main_tb
-# End time: 11:24:51 on Nov 19,2015, Elapsed time: 0:00:00
+# Cycle:                 1749 Time:                35030    
+# Cycle:                 1753 Time:                35110    800bda9d
+# Cycle:                 1758 Time:                35210    b748a7c5
+# Cycle:                 1763 Time:                35310    806793be
+# Cycle:                 1768 Time:                35410    918c9af8
+# Cycle:                 1773 Time:                35510    ca2418cd
+# Cycle:                 1778 Time:                35610    7e519bbc
+# Cycle:                 1783 Time:                35710    4d78ddd3
+# Cycle:                 1788 Time:                35810    45b6b567
+# Cycle:                 1791 Time:                35870    
+# At t=            35870000 clk=1 finish=1 return_val=         0
+# Cycles:                 1791
+# ** Note: $finish    : sha256.v(6249)
+#    Time: 35870 ns  Iteration: 2  Instance: /main_tb
+# End time: 18:40:13 on Nov 19,2015, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0

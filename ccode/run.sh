@@ -1,4 +1,4 @@
 #!/bin/bash
-make target=sha256Test
+make target=sha256
 
-./bin/sha256Test
+./bin/sha256

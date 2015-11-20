@@ -1,5 +1,5 @@
 Flow report for top
-Thu Nov 19 17:53:02 2015
+Thu Nov 19 18:12:55 2015
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -38,24 +38,26 @@ agreement for further details.
 
 
 
-+--------------------------------------------------------------------------+
-; Flow Summary                                                             ;
-+-----------------------------+--------------------------------------------+
-; Flow Status                 ; Flow Failed - Thu Nov 19 17:53:02 2015     ;
-; Quartus II 64-Bit Version   ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
-; Revision Name               ; top                                        ;
-; Top-level Entity Name       ; top                                        ;
-; Family                      ; Cyclone V                                  ;
-; Device                      ; 5CGXFC7C7F23C8                             ;
-; Timing Models               ; Final                                      ;
-; Logic utilization (in ALMs) ; N/A until Partition Merge                  ;
-; Total registers             ; N/A until Partition Merge                  ;
-; Total pins                  ; N/A until Partition Merge                  ;
-; Total virtual pins          ; N/A until Partition Merge                  ;
-; Total block memory bits     ; N/A until Partition Merge                  ;
-; Total PLLs                  ; N/A until Partition Merge                  ;
-; Total DLLs                  ; N/A until Partition Merge                  ;
-+-----------------------------+--------------------------------------------+
++---------------------------------------------------------------------------------+
+; Flow Summary                                                                    ;
++------------------------------------+--------------------------------------------+
+; Flow Status                        ; Successful - Thu Nov 19 18:12:40 2015      ;
+; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
+; Revision Name                      ; top                                        ;
+; Top-level Entity Name              ; de2                                        ;
+; Family                             ; Cyclone IV E                               ;
+; Device                             ; EP4CE115F29C8                              ;
+; Timing Models                      ; Final                                      ;
+; Total logic elements               ; 6,019 / 114,480 ( 5 % )                    ;
+;     Total combinational functions  ; 5,531 / 114,480 ( 5 % )                    ;
+;     Dedicated logic registers      ; 3,387 / 114,480 ( 3 % )                    ;
+; Total registers                    ; 3388                                       ;
+; Total pins                         ; 89 / 529 ( 17 % )                          ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 6,272 / 3,981,312 ( < 1 % )                ;
+; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                            ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                              ;
++------------------------------------+--------------------------------------------+
 
 
 +-----------------------------------------+
@@ -63,44 +65,59 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/19/2015 17:52:49 ;
+; Start date & time ; 11/19/2015 18:09:47 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; top                 ;
 +-------------------+---------------------+
 
 
-+--------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                 ;
-+-----------------------+-------------------------------+---------------+-------------+------------+
-; Assignment Name       ; Value                         ; Default Value ; Entity Name ; Section Id ;
-+-----------------------+-------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID ; 8796761798396.144797356918667 ; --            ; --          ; --         ;
-+-----------------------+-------------------------------+---------------+-------------+------------+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                     ;
++------------------------------------+--------------------------------------------------+---------------+-------------+----------------+
+; Assignment Name                    ; Value                                            ; Default Value ; Entity Name ; Section Id     ;
++------------------------------------+--------------------------------------------------+---------------+-------------+----------------+
+; COMPILER_SIGNATURE_ID              ; 8796761798396.144797458720996                    ; --            ; --          ; --             ;
+; PARTITION_COLOR                    ; 16764057                                         ; --            ; de2         ; Top            ;
+; PARTITION_NETLIST_TYPE             ; SOURCE                                           ; --            ; de2         ; Top            ;
+; SEARCH_PATH                        ; /opt/legup/legup-4.0/tiger/processor/altera_libs ; --            ; --          ; --             ;
+; TIMEQUEST_DO_REPORT_TIMING         ; On                                               ; Off           ; --          ; --             ;
+; TOP_LEVEL_ENTITY                   ; de2                                              ; top           ; --          ; --             ;
+; USE_GENERATED_PHYSICAL_CONSTRAINTS ; Off                                              ; --            ; --          ; eda_blast_fpga ;
++------------------------------------+--------------------------------------------------+---------------+-------------+----------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 986 MB              ; 00:00:35                           ;
-; Total                ; 00:00:14     ; --                      ; --                  ; 00:00:35                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:39     ; 1.0                     ; 1057 MB             ; 00:00:58                           ;
+; Fitter                    ; 00:01:53     ; 1.0                     ; 1360 MB             ; 00:01:51                           ;
+; Assembler                 ; 00:00:09     ; 1.0                     ; 877 MB              ; 00:00:07                           ;
+; TimeQuest Timing Analyzer ; 00:00:12     ; 1.0                     ; 1026 MB             ; 00:00:10                           ;
+; Total                     ; 00:02:53     ; --                      ; --                  ; 00:03:06                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                           ;
-+----------------------+---------------------+----------------+------------+----------------+
-; Module Name          ; Machine Hostname    ; OS Name        ; OS Version ; Processor type ;
-+----------------------+---------------------+----------------+------------+----------------+
-; Analysis & Synthesis ; legup.ECE.mcgill.ca ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
-+----------------------+---------------------+----------------+------------+----------------+
++------------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                                ;
++---------------------------+---------------------+----------------+------------+----------------+
+; Module Name               ; Machine Hostname    ; OS Name        ; OS Version ; Processor type ;
++---------------------------+---------------------+----------------+------------+----------------+
+; Analysis & Synthesis      ; legup.ECE.mcgill.ca ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; Fitter                    ; legup.ECE.mcgill.ca ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; Assembler                 ; legup.ECE.mcgill.ca ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; TimeQuest Timing Analyzer ; legup.ECE.mcgill.ca ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
++---------------------------+---------------------+----------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off top -c top
+quartus_fit --read_settings_files=off --write_settings_files=off top -c top
+quartus_asm --read_settings_files=off --write_settings_files=off top -c top
+quartus_sta top -c top
 
 
 

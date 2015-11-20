@@ -3,7 +3,7 @@ CC = clang
 
 # compiler flags
 #CFLAGS = -I /usr/include/openssl
-CRYPTFLAGS = -lssl -lcrypto
+#CRYPTFLAGS = -lssl -lcrypto
 
 #require a target argument
 CPP_FILES := $(wildcard src/*.c)
