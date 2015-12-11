@@ -64,7 +64,9 @@ int pad (BYTE* data, BYTE* msg, LONG msgLen){
     data[i-3] = (msgLen>>16) & 0xFFFF;
     data[i-2] = (msgLen>>8) & 0xFFFF;
     data[i-1] = msgLen & 0xFFFF;
-    
+
+    i=i-1;   
+ 
     int numBlocks = i/BLOCKSIZE;
     return numBlocks;
 }
@@ -111,7 +113,8 @@ void outerloop(WORD* digest, BYTE* data, int numBlocks){
         h = h7;
 
         WORD T1,T2;
-
+	
+	#pragma omp parallel num_threads (64) private (t)
         for(t=0; t<64; t++){
             T1 = h+  EP1(e) + CH(e,f,g) + k[t] + W[t];
             T2 = EP0(a) + MAJ(a,b,c);
@@ -164,10 +167,13 @@ void SHA256(BYTE* msg, LONG msgLen){
 
 }
 
+
 int main()
 {
-    BYTE msg[44] = "the quick brown fox jumped over the lazy dog";
-    LONG msgLen = 44;
+    BYTE msg[64] = "the quick brown fox jumped over the lazy dog12345678901234567890";
+    LONG msgLen = 64;
+
+
     SHA256(msg,msgLen);
 
 /*    
