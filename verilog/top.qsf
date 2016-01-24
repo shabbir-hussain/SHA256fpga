@@ -19,7 +19,7 @@
 #
 # Quartus II 64-Bit
 # Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-# Date created = 16:19:50  December 10, 2015
+# Date created = 14:14:06  December 14, 2015
 #
 # -------------------------------------------------------------------------- #
 #
@@ -39,12 +39,12 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE AUTO
-set_global_assignment -name TOP_LEVEL_ENTITY main_tb
+set_global_assignment -name TOP_LEVEL_ENTITY sha256
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 15.0.0
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:19:50  DECEMBER 10, 2015"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:14:06  DECEMBER 14, 2015"
 set_global_assignment -name LAST_QUARTUS_VERSION 15.0.0
 set_global_assignment -name SOURCE_FILE PROJ1.v
 set_global_assignment -name SDC_FILE PROJ1.sdc
-set_global_assignment -name SEARCH_PATH /home/shabbir/code/verilog/tiger/processor/altera_libs
+set_global_assignment -name SEARCH_PATH /home/shabbir/code/vlsi/proj/tiger/processor/altera_libs
 
-source /home/shabbir/code/verilog/boards/common.qsf
+source /home/shabbir/code/vlsi/proj/boards/common.qsf

@@ -36,6 +36,10 @@ initial begin
     for (k=0;k<MSGLEN;k=k+1) begin
         mem[k]=k;
     end
+    for (;k<RAM_DEPTH;k=k+1) begin
+        mem[k]=0;
+    end
+    data_out <= 8'hzz;
 end
 
 //mem write

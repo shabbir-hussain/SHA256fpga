@@ -65,8 +65,6 @@ int pad (BYTE* data, BYTE* msg, LONG msgLen){
     data[i-2] = (msgLen>>8) & 0xFFFF;
     data[i-1] = msgLen & 0xFFFF;
 
-    i=i-1;   
- 
     int numBlocks = i/BLOCKSIZE;
     return numBlocks;
 }

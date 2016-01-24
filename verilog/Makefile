@@ -1,4 +1,4 @@
-TOP="tb_pad"
+TOP="sha256"
 FAMILY="Cyclone IV"
 FPGA_BOARD="DE2-115"
 NAME="PROJ1"
